@@ -1,6 +1,6 @@
 import type { SearchResult } from "../types";
 
-const API_URL = "http://localhost:3001/search";
+const API_URL = '/api/search';
 
 export async function search(query: string): Promise<SearchResult[]> {
   const res = await fetch(API_URL, {
