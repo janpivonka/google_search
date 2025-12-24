@@ -46,6 +46,7 @@ export default function App() {
                 }}
                 onFocus={handleFocus}
                 onKeyDown={(e) => e.key === "Enter" && handleSearchWithShift(query, handleSearch)}
+                aria-label="search-input"
                 placeholder="Co dnes budeme hledat?"
                 className="search-input clickable"
               />
@@ -66,7 +67,9 @@ export default function App() {
                 </ul>
               )}
             </div>
-            <button onClick={() => handleSearchWithShift(query, handleSearch)} className="search-button clickable">
+            <button onClick={() => handleSearchWithShift(query, handleSearch)}
+            aria-label="search-button"
+            className="search-button clickable">
               Hledat
             </button>
           </div>
