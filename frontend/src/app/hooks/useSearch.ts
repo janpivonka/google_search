@@ -1,15 +1,18 @@
 import { useState, useRef } from "react";
 import type { SearchResult } from "../types";
 
+// Dynamicky nastavíme API URL podle prostředí
+const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://googlesearch-production.up.railway.app"
+    : "http://localhost:3001";
+
 export function useSearch() {
   const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const debounceRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Relativní cesta pro lokální i produkční běh
-  const API_URL = '/api';
 
   const handleSearch = async (query: string) => {
     if (!query) return;
@@ -40,7 +43,9 @@ export function useSearch() {
     debounceRef.current = setTimeout(async () => {
       if (!query) return setSuggestions([]);
       try {
-        const res = await fetch(`${API_URL}/search/suggestions?q=${encodeURIComponent(query)}`);
+        const res = await fetch(
+          `${API_URL}/search/suggestions?q=${encodeURIComponent(query)}`
+        );
         const data = await res.json();
         setSuggestions(data || []);
       } catch (err) {
