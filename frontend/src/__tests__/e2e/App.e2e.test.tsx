@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../../app/components/App";
 
-// Mock useSearch hook
 jest.mock("../../app/hooks/useSearch", () => ({
   useSearch: () => ({
     results: [],
@@ -16,7 +15,6 @@ jest.mock("../../app/hooks/useSearch", () => ({
   }),
 }));
 
-// Mock useUI hook
 jest.mock("../../app/hooks/useUI", () => ({
   useUI: () => ({
     handleTitleClick: jest.fn(),
@@ -42,6 +40,5 @@ describe("App E2E", () => {
     render(<App />);
     const suggestion = screen.getByText("test suggestion");
     await userEvent.click(suggestion);
-    // zde by se mohlo ověřit volání mock funkce selectSuggestion
   });
 });

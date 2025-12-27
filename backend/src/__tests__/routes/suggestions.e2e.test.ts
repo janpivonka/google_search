@@ -1,6 +1,5 @@
-// src/__tests__/routes/suggestions.e2e.test.ts
 import request from "supertest";
-import { app } from "../../app"; // tvůj Express app
+import { app } from "../../app";
 import * as suggestionsService from "../../services/suggestions";
 
 jest.mock("../../services/suggestions");

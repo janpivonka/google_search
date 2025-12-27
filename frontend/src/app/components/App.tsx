@@ -1,4 +1,3 @@
-// frontend/src/app/components/App.tsx
 import { useState } from "react";
 import { useSearch } from "../hooks/useSearch";
 import { downloadResultsAsJSON } from "../services/download.service";
@@ -18,7 +17,6 @@ export default function App() {
 
   return (
     <>
-      {/* Loader */}
       {loading && (
         <div className="loader-overlay">
           <div className="loader"></div>
@@ -26,7 +24,6 @@ export default function App() {
       )}
 
       <div className="container">
-        {/* Title */}
         <h1
           className={`title ${results.length > 0 ? "title-clickable" : ""}`}
           onClick={() => handleTitleClick(setQuery)}
@@ -34,7 +31,6 @@ export default function App() {
           Peony Google Search Mock
         </h1>
 
-        {/* Search bar */}
         <div className="search-bar-wrapper">
           <div className="search-bar">
             <div className="input-wrapper">
@@ -50,7 +46,6 @@ export default function App() {
                 placeholder="Co dnes budeme hledat?"
                 className="search-input clickable"
               />
-              {/* Suggestions */}
               {suggestions.length > 0 && (
                 <ul className="suggestions-list open">
                   {suggestions.map((s, i) => (
@@ -75,10 +70,8 @@ export default function App() {
           </div>
         </div>
 
-        {/* Error */}
         {error && <p className="error">{error}</p>}
 
-        {/* Results */}
         {results.length > 0 && (
           <>
             <div className="results">

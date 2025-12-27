@@ -3,7 +3,6 @@ import request from "supertest";
 import { app } from "../../app";
 import * as suggestionsService from "../../services/suggestions";
 
-// mockujeme fetchSuggestions, aby test nevolal reálné API
 jest.mock("../../services/suggestions");
 
 describe("GET /search/suggestions", () => {

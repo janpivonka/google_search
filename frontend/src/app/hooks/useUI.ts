@@ -1,4 +1,3 @@
-// frontend/src/app/hooks/useUI.ts
 export function useUI(resultsLength: number, resetResults: () => void) {
   const handleTitleClick = (setQuery: (q: string) => void) => {
     if (resultsLength === 0) return;
@@ -20,12 +19,12 @@ export function useUI(resultsLength: number, resetResults: () => void) {
   const selectSuggestion = (
     suggestion: string,
     setQuery: (q: string) => void,
-    fetchSuggestions: (q: string) => void, // kompatibilní s App.tsx
+    fetchSuggestions: (q: string) => void,
     handleSearchWithShift: (q: string, handleSearch: (q: string) => void) => void,
     handleSearch: (q: string) => void
   ) => {
     setQuery(suggestion);
-    fetchSuggestions(""); // vyčistí dropdown
+    fetchSuggestions("");
     handleSearchWithShift(suggestion, handleSearch);
   };
 

@@ -1,4 +1,3 @@
-// src/__tests__/googleImages.test.ts
 import { fetchImageForResult } from "../../services/googleImages";
 import fetch from "node-fetch";
 

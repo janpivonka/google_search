@@ -1,4 +1,3 @@
-// backend/src/services/search.service.ts
 import fetch from "node-fetch";
 import he from "he";
 import { fetchImageForResult } from "./googleImages";
@@ -30,7 +29,6 @@ export async function search(query: string) {
     })
   );
 
-  // fallback na "/placeholder.png" pokud fetchImageForResult vrátí null/undefined nebo při chybě
   await Promise.all(
     results.map(async (item) => {
       try {

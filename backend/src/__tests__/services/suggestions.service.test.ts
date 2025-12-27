@@ -16,7 +16,7 @@ describe("suggestions service", () => {
       arrayBuffer: jest.fn().mockResolvedValue(Buffer.from(JSON.stringify(mockData))),
     };
 
-    mockedFetch.mockResolvedValue(mockResponse as any); // fix typů
+    mockedFetch.mockResolvedValue(mockResponse as any);
 
     const results = await fetchSuggestions("query");
     expect(results).toEqual(["result1", "result2"]);
@@ -29,7 +29,7 @@ describe("suggestions service", () => {
       arrayBuffer: jest.fn().mockResolvedValue(Buffer.from(JSON.stringify(mockData))),
     };
 
-    mockedFetch.mockResolvedValue(mockResponse as any); // fix typů
+    mockedFetch.mockResolvedValue(mockResponse as any);
 
     const results = await fetchSuggestions("query");
     expect(results).toEqual([]);
@@ -47,7 +47,7 @@ describe("suggestions service", () => {
       arrayBuffer: jest.fn(),
     };
 
-    mockedFetch.mockResolvedValue(mockResponse as any); // fix typů
+    mockedFetch.mockResolvedValue(mockResponse as any);
 
     await expect(fetchSuggestions("query")).rejects.toThrow("Suggestions request failed");
   });

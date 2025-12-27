@@ -1,4 +1,3 @@
-// src/__tests__/services/suggestions.service.edgecases.test.ts
 import { fetchSuggestions } from "../../services/suggestions";
 import fetch from "node-fetch";
 

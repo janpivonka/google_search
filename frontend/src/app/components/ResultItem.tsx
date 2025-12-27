@@ -1,4 +1,3 @@
-// frontend/src/app/components/ResultItem.tsx
 import type { SearchResult } from "../types";
 import type { MouseEvent } from "react";
 import { useState } from "react";

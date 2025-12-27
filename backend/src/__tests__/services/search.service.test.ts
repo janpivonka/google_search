@@ -1,4 +1,3 @@
-// src/__tests__/search.service.test.ts
 import { search } from "../../services/search.service";
 import * as googleImages from "../../services/googleImages";
 import fetch from "node-fetch";

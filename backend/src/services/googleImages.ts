@@ -1,4 +1,3 @@
-// backend/src/services/googleImages.ts
 import fetch from "node-fetch";
 
 export async function fetchImageForResult(query: string): Promise<string | null> {

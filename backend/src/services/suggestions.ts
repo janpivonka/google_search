@@ -1,7 +1,6 @@
 import fetch from "node-fetch";
 
 export async function fetchSuggestions(q: string): Promise<string[]> {
-  // ← přidaná kontrola na prázdný nebo whitespace-only dotaz
   if (!q || !q.trim()) {
     return [];
   }
@@ -21,7 +20,6 @@ export async function fetchSuggestions(q: string): Promise<string[]> {
 
     return data[1] || [];
   } catch (err) {
-    // jednotná chyba při selhání
     throw new Error("Suggestions request failed");
   }
 }

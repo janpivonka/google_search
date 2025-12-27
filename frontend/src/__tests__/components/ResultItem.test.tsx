@@ -63,7 +63,6 @@ describe("ResultItem component", () => {
     const link = screen.getByRole("link");
     const style = link.getAttribute("style") || "";
 
-  // Regex match pro bezpečné porovnání desetinných čísel
     expect(style).toMatch(/animation-delay:\s*0\.3\d*s/);
   });
 });

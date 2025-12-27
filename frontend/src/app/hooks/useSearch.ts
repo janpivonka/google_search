@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import type { SearchResult } from "../types";
 
-// Dynamicky nastavíme API URL podle prostředí
 const API_URL =
   process.env.NODE_ENV === "production"
     ? "https://googlesearch-production.up.railway.app"

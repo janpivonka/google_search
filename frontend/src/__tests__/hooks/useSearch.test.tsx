@@ -1,10 +1,8 @@
-// src/__tests__/hooks/useSearch.test.tsx
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { act } from "react";
 import { useSearch } from "../../app/hooks/useSearch";
 
-// Wrapper komponenta pro test hooku
 function TestHook({ callback }: { callback: (hook: ReturnType<typeof useSearch>) => void }) {
   const hook = useSearch();
   callback(hook);
@@ -29,7 +27,6 @@ describe("useSearch hook", () => {
   it("resetResults clears state", () => {
     render(<TestHook callback={(hook) => { hookResult = hook; }} />);
     act(() => {
-      // naplníme nějaká data
       hookResult!.results.push({ title: "x", url: "https://x.com", description: "desc" });
       hookResult!.suggestions.push("sugg");
       hookResult!.error = "error";
@@ -44,7 +41,6 @@ describe("useSearch hook", () => {
   });
 
   it("handleSearch sets results and clears suggestions", async () => {
-    // mock fetch
     global.fetch = jest.fn(() =>
       Promise.resolve({
         ok: true,
@@ -64,7 +60,6 @@ describe("useSearch hook", () => {
   });
 
   it("fetchSuggestions sets suggestions", async () => {
-    // mock fetch
     global.fetch = jest.fn(() =>
       Promise.resolve({
         ok: true,
@@ -76,7 +71,6 @@ describe("useSearch hook", () => {
 
     await act(async () => {
       hookResult!.fetchSuggestions("query");
-      // čekáme déle než debounce (300ms)
       await new Promise(r => setTimeout(r, 350));
     });
 

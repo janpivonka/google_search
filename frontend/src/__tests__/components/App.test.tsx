@@ -1,9 +1,7 @@
-// src/__tests__/App.test.tsx
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import App from "../../app/components/App";
 
-// --- Mock fetch ---
 const mockResults = [
   {
     title: "Test result 1",
@@ -86,7 +84,6 @@ describe("App component with hooks", () => {
   it("clears results when title is clicked", async () => {
     render(<App />);
 
-    // nejdřív proveď search
     const input = screen.getByPlaceholderText(/Co dnes budeme hledat/i);
     fireEvent.change(input, { target: { value: "test" } });
     fireEvent.click(screen.getByText(/Hledat/i));
@@ -95,7 +92,6 @@ describe("App component with hooks", () => {
       expect(screen.getByText("Test result 1")).toBeInTheDocument();
     });
 
-    // klik na title
     fireEvent.click(screen.getByText(/Peony Google Search Mock/i));
 
     await waitFor(() => {

@@ -1,4 +1,3 @@
-// src/__tests__/hooks/useUI.test.ts
 import { useUI } from "../../app/hooks/useUI";
 
 describe("useUI hook", () => {
@@ -12,7 +11,6 @@ describe("useUI hook", () => {
     const { handleTitleClick } = useUI(1, resetResultsMock);
     const setQueryMock = jest.fn();
 
-    // Přidáme container do documentu pro test
     document.body.innerHTML = `<div class="container shifted"></div>`;
     handleTitleClick(setQueryMock);
 
@@ -54,7 +52,7 @@ describe("useUI hook", () => {
     );
 
     expect(setQueryMock).toHaveBeenCalledWith(suggestion);
-    expect(fetchSuggestionsMock).toHaveBeenCalledWith(""); // vyčistí dropdown
+    expect(fetchSuggestionsMock).toHaveBeenCalledWith("");
     expect(handleSearchWithShiftMock).toHaveBeenCalledWith(suggestion, handleSearchMock);
   });
 });

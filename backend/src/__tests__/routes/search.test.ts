@@ -20,7 +20,6 @@ describe("POST /search", () => {
   });
 
   it("returns search results with correct structure", async () => {
-    // 1️⃣ SerpAPI response
     mockedFetch.mockResolvedValueOnce(
       new Response(
         JSON.stringify({
@@ -36,7 +35,6 @@ describe("POST /search", () => {
       )
     );
 
-    // 2️⃣ Google Image API response
     mockedFetch.mockResolvedValueOnce(
       new Response(
         JSON.stringify({
