@@ -69,8 +69,6 @@ GOOGLE_CX=...
 SERP_API_KEY=...
 ```
 
----
-
 ### Frontend
 
 ```powershell
@@ -84,6 +82,48 @@ Frontend poběží na:
 ```
 http://localhost:5173
 ```
+
+---
+
+## Docker
+
+Aplikace podporuje **vývojový i produkční režim** s Dockerem.
+
+### Vývojový režim (dev)
+
+* Hot-reload, okamžitá viditelnost změn
+* Používá lokální zdrojové soubory (volumes)
+
+Spuštění:
+
+```bash
+./start-dev.sh
+```
+
+Backend: `http://localhost:3001`
+Frontend: `http://localhost:5173`
+
+Docker Compose soubor: `docker-compose.dev.yml`
+Frontend musí být spuštěn s `--host 0.0.0.0`, aby byl přístupný z hosta.
+
+### Produkční režim (prod)
+
+* Optimalizovaný build
+* Minifikované statické soubory a menší backend image
+* Odstranění devDependencies
+
+Spuštění:
+
+```bash
+./start-prod.sh
+```
+
+Backend: `http://localhost:3001`
+Frontend: `http://localhost` (port 80)
+
+Docker Compose soubor: `docker-compose.prod.yml`
+
+> Poznámka: Prod build je vhodný pro nasazení na server, pro lokální vývoj stačí dev build.
 
 ---
 
