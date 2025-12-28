@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/package*.json:/app/package*.json
+    environment:
+      NODE_ENV: development
+    command: npm run dev
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/package*.json:/app/package*.json
+    environment:
+      NODE_ENV: development
+    # přidáno --host 0.0.0.0 pro WSL a Docker
+    command: npm run dev -- --host 0.0.0.0
