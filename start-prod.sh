@@ -1,4 +1,4 @@
-docker compose -f docker-compose.yml up --build -d
+docker compose -f docker-compose.prod.yml up -d --build
 
 echo "Čekám na spuštění serverů..."
 sleep 5

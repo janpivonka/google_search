@@ -1,3 +1,5 @@
+version: '3.9'
+
 services:
   backend:
     build:
@@ -23,5 +25,4 @@ services:
       - ./frontend/package*.json:/app/package*.json
     environment:
       NODE_ENV: development
-    # přidáno --host 0.0.0.0 pro WSL a Docker
     command: npm run dev -- --host 0.0.0.0
