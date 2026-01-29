@@ -73,6 +73,16 @@ Core principles:
 
 ---
 
+## 📸 Screenshots
+
+### Home Page
+
+![Home Page](frontend/public/images/screenshots/home-page.png)
+
+### Search Results
+
+![Results Page](frontend/public/images/screenshots/results-page.png)
+
 ## 🛠️ Tech Stack
 
 ### Backend
