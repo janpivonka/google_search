@@ -2,7 +2,7 @@ import type { SearchResult } from "../types";
 
 // 1. Definujeme adresu natvrdo, dokud nezjistíme, proč Vercel nebere proměnné
 // Vyměň 'https://tvuj-novy-backend.vercel.app' za skutečnou URL, kterou ti dal Vercel pro backend
-const BACKEND_URL = 'https://tvuj-novy-backend.vercel.app';
+const BACKEND_URL = 'https://google-search-backend-mu.vercel.app/';
 
 export async function search(query: string): Promise<SearchResult[]> {
   // 2. Použijeme BACKEND_URL přímo v fetch
