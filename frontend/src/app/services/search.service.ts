@@ -1,18 +1,24 @@
 import type { SearchResult } from "../types";
 
-// V devu (localhost) se použije /api (díky tvé proxy ve vite.config)
-// V produkci (Vercel) se použije plná URL z environment variables
-const isDev = import.meta.env.DEV;
-const BASE_URL = isDev ? '/api' : (import.meta.env.VITE_API_URL || '');
+// 1. Definujeme adresu natvrdo, dokud nezjistíme, proč Vercel nebere proměnné
+// Vyměň 'https://tvuj-novy-backend.vercel.app' za skutečnou URL, kterou ti dal Vercel pro backend
+const BACKEND_URL = 'https://tvuj-novy-backend.vercel.app';
 
 export async function search(query: string): Promise<SearchResult[]> {
-  const res = await fetch(`${BASE_URL}/search`, {
+  // 2. Použijeme BACKEND_URL přímo v fetch
+  const res = await fetch(`${BACKEND_URL}/search`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query }),
   });
 
   if (!res.ok) throw new Error("Failed to fetch search results");
+  return res.json();
+}
 
+// Pokud máš v tomto souboru i funkci pro suggestions, uprav ji stejně:
+export async function getSuggestions(query: string): Promise<string[]> {
+  const res = await fetch(`${BACKEND_URL}/search/suggestions?q=${encodeURIComponent(query)}`);
+  if (!res.ok) throw new Error("Suggestions fetch failed");
   return res.json();
 }
