@@ -1,17 +1,24 @@
 # Google Search – Full-Stack Application
 
 [![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge\&logo=vercel\&logoColor=white)](https://peony-google-search-mock.vercel.app/)
-[![Railway](https://img.shields.io/badge/Railway-0B0D0E?style=for-the-badge\&logo=railway\&logoColor=white)](https://googlesearch-production.up.railway.app)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge\&logo=react\&logoColor=61DAFB)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge\&logo=node.js\&logoColor=white)](https://nodejs.org/)
 
 ---
 
+# 🔍 Google Search – Full-Stack Application
+
 ## 📝 Context and Project Goal
 
 This project was developed as a **technical hiring assignment** for the company **INIZIO**.
 
-The goal was to design and deliver a **production-ready full-stack solution** covering frontend, backend, testing strategy, Docker-based containerization, and cloud deployment.
+The goal was to design and deliver a **production-ready full-stack solution** covering:
+
+* frontend application architecture,
+* backend API design,
+* testing strategy,
+* Docker-based containerization,
+* and a robust cloud deployment strategy using **Serverless Functions**.
 
 ---
 
@@ -20,67 +27,49 @@ The goal was to design and deliver a **production-ready full-stack solution** co
 **Frontend (Vercel):**
 👉 [https://peony-google-search-mock.vercel.app/](https://peony-google-search-mock.vercel.app/)
 
-**Backend API (Railway):**
-👉 [https://googlesearch-production.up.railway.app](https://googlesearch-production.up.railway.app)
+**Backend API (Vercel Serverless):**
+👉 [https://google-search-backend-mu.vercel.app/](https://google-search-backend-mu.vercel.app/)
 
 ---
 
 ## 🏗️ Application Architecture
 
-The project is structured into **frontend and backend layers**, each with clear responsibilities and modular design.
+The project is structured into **frontend and backend layers**, optimized for **cloud performance, scalability, and maintainability**.
 
-### 🔹 Backend
+### 🔹 Backend (Serverless)
 
-Implemented in **Node.js + TypeScript** with the following key points:
+Implemented using **Node.js + TypeScript** and deployed as **Vercel Serverless Functions**.
 
-* Modular architecture: `routes / services`
-* Integration with external search APIs: SERP API, Google Custom Search API
-* Data enrichment and normalization pipeline
-* Centralized error handling
-* Unit and integration tests (Jest)
-* Dockerized development and production environments
+**Backend characteristics:**
+
+* **Modular architecture** – clean separation of routes, services, and controllers
+* **API integration** – robust connection to Google Custom Search API and SERP API
+* **CORS & security** – dynamic CORS configuration supporting preview and production environments
+* **Data normalization** – transformation pipeline ensuring consistent frontend-ready data structures
+* **Testing** – comprehensive unit and integration tests using **Jest**
+
+---
 
 ### 🔹 Frontend
 
-Implemented in **React + TypeScript + Vite**:
+Implemented using **React + TypeScript + Vite**, with a strong emphasis on clarity and performance.
 
-* Feature-first component structure
-* Application logic abstracted in custom hooks (`useSearch`, `useUI`)
-* Services layer for API communication
-* Tailwind CSS for rapid and consistent styling
-* Component, hook, integration, and basic end-to-end tests
+Core principles:
+
+* **Feature-first structure** – scalable component organization
+* **Custom hooks** – business logic abstracted into `useSearch` and `useUI`
+* **Dynamic environment handling** – seamless switching between local development and production APIs
+* **Tailwind CSS** – modern, responsive UI inspired by the classic Google search experience
 
 ---
 
 ## ✨ Key Features
 
-* Keyword-based Google search
-* Retrieval of **organic results only** (no ads)
-* Automatic enrichment of results with related images
-* Display of results in a structured web interface
-* Export results to a structured JSON file
-* Desktop SPA optimized interface
-
----
-
-## ⚠️ Current State and Limitations
-
-* Fully functional frontend consuming data from backend API
-* **Backend endpoints for write operations not connected yet**
-* All critical features tested, ready for further enhancements
-* Screenshot-based overview included for clarity
-
----
-
-## 📸 Screenshots
-
-### Home Page
-
-![Home Page](frontend/public/images/screenshots/home-page.png)
-
-### Search Results
-
-![Results Page](frontend/public/images/screenshots/results-page.png)
+* **Keyword Search** – real-time Google search results
+* **Clean Data** – organic results only, filtered from ads and clutter
+* **Image Enrichment** – automatic result enrichment with high-quality thumbnails
+* **JSON Export** – ability to download structured search results
+* **Optimized UI** – fast, accessible Single Page Application (SPA)
 
 ---
 
@@ -91,54 +80,47 @@ Implemented in **React + TypeScript + Vite**:
 * Node.js
 * Express
 * TypeScript
-* SERP API
-* Google Custom Search API
+* Google Custom Search API / SERP API
 * Jest (unit & integration tests)
+* Deployment: **Vercel Serverless Functions**
 
 ### Frontend
 
-* React
+* React 18
 * Vite
 * TypeScript
 * Tailwind CSS
-* Jest + Testing Library
+* Jest + React Testing Library
+* Deployment: **Vercel (Static Hosting)**
 
 ### Infrastructure
 
-* Docker & Docker Compose (development & production)
-* Railway (backend deployment)
-* Vercel (frontend deployment)
+* **Docker** – full containerization for local development (`docker-compose.yml`)
+* **CI/CD** – automated deployment pipeline via Vercel & GitHub integration
 
 ---
 
 ## 📂 Project Structure
 
-```
+```text
 google_search/
 ├─ backend/
+│  ├─ api/             # Vercel entry point
 │  ├─ src/
 │  │  ├─ routes/
 │  │  ├─ services/
 │  │  └─ __tests__/
-│  ├─ Dockerfile.dev
-│  ├─ Dockerfile.prod
-│  └─ jest.config.cjs
+│  └─ vercel.json      # Serverless configuration
 │
 ├─ frontend/
 │  ├─ src/
 │  │  ├─ app/
 │  │  │  ├─ components/
 │  │  │  ├─ hooks/
-│  │  │  ├─ services/
-│  │  │  └─ __tests__/
-│  ├─ public/
-│  │  └─ images/screenshots/
-│  ├─ Dockerfile.dev
-│  ├─ Dockerfile.prod
-│  └─ jest.config.cjs
+│  │  │  └─ services/
+│  └─ .env.example
 │
 ├─ docker-compose.yml
-├─ docker-compose.prod.yml
 └─ package.json
 ```
 
@@ -146,7 +128,7 @@ google_search/
 
 ## ⚙️ Local Development
 
-### Backend
+### 1️⃣ Backend
 
 ```bash
 cd backend
@@ -154,17 +136,15 @@ npm install
 npm run dev
 ```
 
-Backend runs at: `http://localhost:3001`
+Requires `.env` with the following variables:
 
-Environment variables required (`.env`):
+* `GOOGLE_API_KEY`
+* `GOOGLE_CX`
+* `SERP_API_KEY`
 
-```
-GOOGLE_API_KEY=...
-GOOGLE_CX=...
-SERP_API_KEY=...
-```
+---
 
-### Frontend
+### 2️⃣ Frontend
 
 ```bash
 cd frontend
@@ -172,71 +152,9 @@ npm install
 npm run dev
 ```
 
-Frontend runs at: `http://localhost:5173`
+The frontend uses **Vite Proxy** to communicate with the local backend at:
 
----
-
-## Docker Setup
-
-### Development Mode
-
-* Hot reload
-* Local source files via volumes
-
-```
-./start.sh
-```
-
-* Backend: `http://localhost:3001`
-* Frontend: `http://localhost:5173`
-* Docker Compose: `docker-compose.yml`
-
-### Production Mode
-
-* Optimized builds
-* Minified static assets
-* Development dependencies removed
-
-```
-./start-prod.sh
-```
-
-* Backend: `http://localhost:3001`
-* Frontend: `http://localhost` (port 80)
-* Docker Compose: `docker-compose.prod.yml`
-
----
-
-## Testing Strategy
-
-### Backend
-
-* Unit tests for services
-* Integration tests for routes
-* Edge-case testing for API logic
-
-### Frontend
-
-* Component tests
-* Hook tests
-* Integration tests
-* Basic end-to-end tests
-
-Run all tests from project root:
-
-```
-npm run test:all
-```
-
----
-
-## 📈 Roadmap and Future Improvements
-
-* Authentication and API rate limiting
-* Caching of search results
-* Centralized error handling and logging
-* More extensive end-to-end testing
-* CI/CD for automated deployment
+👉 [http://localhost:3001](http://localhost:3001)
 
 ---
 
