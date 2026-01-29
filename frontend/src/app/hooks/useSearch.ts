@@ -1,10 +1,9 @@
 import { useState, useRef } from "react";
 import type { SearchResult } from "../types";
 
-const API_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://googlesearch-production.up.railway.app"
-    : "http://localhost:3001";
+// ✅ Používáme import.meta.env pro Vite.
+// Pokud proměnná neexistuje, použije se localhost (pro tvůj npm run dev).
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 export function useSearch() {
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -19,6 +18,7 @@ export function useSearch() {
     setError(null);
 
     try {
+      // ✅ Nyní volá správnou URL (např. https://tvuj-backend.vercel.app/search)
       const res = await fetch(`${API_URL}/search`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -32,6 +32,7 @@ export function useSearch() {
       setSuggestions([]);
     } catch (err: any) {
       setError(err.message ?? "Unknown error");
+      console.error("Search failed:", err);
     } finally {
       setLoading(false);
     }
@@ -42,6 +43,7 @@ export function useSearch() {
     debounceRef.current = setTimeout(async () => {
       if (!query) return setSuggestions([]);
       try {
+        // ✅ Nyní volá správnou URL pro našeptávač
         const res = await fetch(
           `${API_URL}/search/suggestions?q=${encodeURIComponent(query)}`
         );
