@@ -4,12 +4,15 @@ import searchRouter from "./routes/search";
 
 export const app = express();
 
-// Konfigurace CORS
 app.use(cors({
-  origin: [
-    "http://localhost:5173", // Lokální vývoj
-    "https://peony-google-search-mock.vercel.app"
-  ],
+  origin: function (origin, callback) {
+    // Povolíme localhost nebo jakoukoli subdoménu na vercel.app
+    if (!origin || origin.startsWith("http://localhost") || origin.endsWith(".vercel.app")) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
@@ -17,15 +20,10 @@ app.use(cors({
 
 app.use(express.json());
 
-// Testovací endpoint pro ověření funkčnosti
 app.get("/", (req, res) => {
-  res.json({
-    status: "Backend is running on Vercel! 🚀",
-    timestamp: new Date().toISOString()
-  });
+  res.json({ status: "Backend is running! 🚀" });
 });
 
-// Zapojení routeru
 app.use("/search", searchRouter);
 
 export default app;
